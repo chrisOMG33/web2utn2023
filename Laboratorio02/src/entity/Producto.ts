@@ -1,23 +1,33 @@
-// import { maxLength } from "class-validator";
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { IsEmail, MaxLength, IsNotEmpty, maxLength } from "class-validator";
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { DetalleFactura } from "./DetalleFactura";
 
 @Entity()
-export class Producto{
-    @PrimaryColumn()
-    codProducto:number;
-    @Column()
-    descripcion:string;
-    @Column()
-    precioProducto:number;
-    @Column()
-    stockMaximo:number;
-    @Column()
-    stockMinimo:number;
-    @Column()
-    codProveedor:number;
-    @Column()
-    estado:boolean;
-    detallesFactura: any;
-    
+export class Producto {
+  @PrimaryColumn()
+  id: number;
+  @Column({ length: 5 })
+  //@MaxLength(5, { message: "Debe ser menos de 5 caracteres" })
+  @MaxLength(50)
+  @IsNotEmpty()
+  nombre: string;
+  @Column()
+  @IsNotEmpty({ message: "Hola" })
+  precio: number;
+  @Column()
+  @IsNotEmpty()
+  stock: number;
+  @Column()
+  fechaIngreso: Date;
+  @Column()
+  estado: boolean;
 
+  @OneToMany(() => DetalleFactura, (detalle) => detalle.producto)
+  detallesFactura: DetalleFactura[];
 }

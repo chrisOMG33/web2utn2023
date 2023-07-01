@@ -1,21 +1,30 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+} from "typeorm";
+import { Persona } from "./Persona";
+import { TipoCliente } from "./TipoCliente";
+import { Factura } from "./Factura";
 
 @Entity()
 export class Cliente {
+  @PrimaryColumn()
+  cedula: string;
 
-    @PrimaryGeneratedColumn()
-    Ruc_cliente: number
+  @ManyToOne(() => TipoCliente, (tipoCliente) => tipoCliente.cliente)
+  tipoCliente: TipoCliente;
+  @Column()
+  fechaIngreso: Date;
 
-    @Column()
-    nombre_cliente: string
+  @OneToOne(() => Persona, { cascade: ["insert", "update"] })
+  @JoinColumn({ name: "cedula" })
+  persona: Persona; //uno a uno
 
-    @Column()
-    apellidos_cliente: string
-
-    @Column()
-    direccion_cliente: string
-
-    @Column()
-    telefono_cliente: number
-    
-    }
+  @OneToMany(() => Factura, (factura) => factura.cliente)
+  facturas: Factura[];
+}
