@@ -4,16 +4,15 @@ import { CommonModule } from '@angular/common';
 import { MantenimientosRoutingModule } from './mantenimientos-routing.module';
 import { MantenimientosComponent } from './mantenimientos.component';
 import { ClientesComponent } from './clientes/clientes.component';
-
+import { ProductosComponent } from './productos/productos.component';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   declarations: [
     MantenimientosComponent,
-    ClientesComponent
+    ClientesComponent,
+    ProductosComponent,
   ],
-  imports: [
-    CommonModule,
-    MantenimientosRoutingModule
-  ]
+  imports: [CommonModule, MantenimientosRoutingModule, MaterialModule],
 })
-export class MantenimientosModule { }
+export class MantenimientosModule {}

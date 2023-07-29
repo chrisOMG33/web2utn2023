@@ -1,0 +1,15 @@
+<mat-card class="personaje-card" *ngFor="let pers of results.results">
+    <img mat-card-sm-image [src]="pers.image" alt="Imagen de {{ pers.name }}" class="personaje-image">
+  
+    <div class="personaje-content">
+      <mat-card-title>{{ pers.name }}</mat-card-title>
+      <mat-card-subtitle>ID: {{ pers.id }}</mat-card-subtitle>
+  
+      <mat-card-content>
+        <p>Estado: {{ pers.status }}</p>
+        <p>Especie: {{ pers.species }}</p>
+        <p>Género: {{ pers.gender }}</p>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  

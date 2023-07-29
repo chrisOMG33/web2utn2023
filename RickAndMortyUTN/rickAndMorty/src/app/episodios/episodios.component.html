@@ -1,0 +1,18 @@
+<p>Episodios works!</p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Air Date</th>
+    <th>Episode</th>
+    <th>Created</th>
+  </tr>
+  <tr *ngFor="let episodio of results.results">
+    <td>{{ episodio.id }}</td>
+    <td>{{ episodio.name }}</td>
+    <td>{{ episodio.air_date }}</td>
+    <td>{{ episodio.episode }}</td>
+    <td>{{ episodio.created }}</td>
+  </tr>
+</table>
