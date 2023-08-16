@@ -1,0 +1,22 @@
+*{
+    background-color: brown;
+}
+ul>li>a {
+    text-decoration: none;
+
+}
+ul>li>a:hover {
+    color: whitesmoke;
+    text-decoration: solid;
+
+}
+ul{
+    margin: 0px;
+    
+}
+ul>li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
