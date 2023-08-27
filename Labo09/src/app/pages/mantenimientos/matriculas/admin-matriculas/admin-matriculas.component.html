@@ -1,0 +1,53 @@
+<p class="titulo">{{ titulo }}</p>
+<form [formGroup]="estudianteForm.baseForm">
+  <mat-form-field>
+    <mat-label>Id</mat-label>
+    <input matInput formControlName="id" [readonly]="!isCreate" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre estudiante</mat-label>
+    <input matInput formControlName="nombre" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cursos</mat-label>
+    <mat-select formControlName="cursos">
+      <mat-option
+        *ngFor="let cursos of listaCursos"
+        [value]="cursos.id"
+      >
+        {{ cursos.nombreCurso }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Primer Apellido</mat-label>
+    <input matInput formControlName="apellido1" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Segundo Apellido</mat-label>
+    <input matInput formControlName="apellido2" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Direccion</mat-label>
+    <input matInput formControlName="direccion" />
+  </mat-form-field>
+</form>
+
+<div>
+  <button
+    mat-button
+    color="primary"
+    [mat-dialog-close]="estudianteForm.baseForm.value"
+    (click)="guardar()"
+  >
+    Guardar
+  </button>
+
+  <button mat-button color="danger" mat-dialog-close>Cerrar</button>
+</div>
+
